@@ -138,3 +138,30 @@ export const getProjectById = async ({ id }: { id: string }) => {
         return null;
     }
 };
+
+// ── Billing ───────────────────────────────────────────────────────────────────
+export const createCheckoutSession = async (plan: "monthly" | "yearly"): Promise<string | null> => {
+    if (!PUTER_WORKER_URL) return null;
+    try {
+        const response = await puter.workers.exec(`${PUTER_WORKER_URL}/api/payments/checkout`, {
+            method: "POST",
+            body: JSON.stringify({ plan }),
+        });
+        if (!response.ok) return null;
+        const data = (await response.json()) as { checkoutUrl?: string };
+        return data?.checkoutUrl ?? null;
+    } catch {
+        return null;
+    }
+};
+
+export const getUserUsage = async (): Promise<UsageStats | null> => {
+    if (!PUTER_WORKER_URL) return null;
+    try {
+        const response = await puter.workers.exec(`${PUTER_WORKER_URL}/api/usage`, { method: "GET" });
+        if (!response.ok) return null;
+        return (await response.json()) as UsageStats;
+    } catch {
+        return null;
+    }
+};

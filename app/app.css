@@ -596,4 +596,99 @@
             @apply text-sm text-zinc-500;
         }
     }
+
+    /* ── Paywall Modal ─────────────────────────────────────────────────────── */
+    .paywall-overlay {
+        @apply fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4;
+    }
+
+    .paywall-modal {
+        @apply relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 border border-zinc-200;
+        animation: paywall-in 0.2s ease-out;
+    }
+
+    @keyframes paywall-in {
+        from { opacity: 0; transform: scale(0.95) translateY(8px); }
+        to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .paywall-close {
+        @apply absolute top-4 right-4 w-8 h-8 rounded-full bg-zinc-100 hover:bg-zinc-200 flex items-center justify-center text-zinc-500 hover:text-black transition-colors;
+    }
+
+    .paywall-header {
+        @apply text-center mb-6;
+
+        .paywall-icon {
+            @apply w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4 text-primary;
+        }
+
+        h2 {
+            @apply text-2xl font-serif font-bold text-black mb-2;
+        }
+
+        p {
+            @apply text-sm text-zinc-500 leading-relaxed;
+        }
+    }
+
+    .plan-toggle {
+        @apply flex rounded-xl bg-zinc-100 p-1 mb-6;
+
+        .plan-tab {
+            @apply flex-1 flex items-center justify-center gap-2 rounded-lg py-2 text-sm font-medium text-zinc-500 transition-all duration-200;
+
+            &.active {
+                @apply bg-white text-black shadow-sm;
+            }
+        }
+
+        .plan-badge {
+            @apply text-[10px] font-bold uppercase tracking-wide bg-green-100 text-green-700 px-2 py-0.5 rounded-full;
+        }
+    }
+
+    .plan-pricing {
+        @apply flex items-baseline gap-1 justify-center mb-6;
+
+        .plan-price {
+            @apply text-5xl font-serif font-bold text-black;
+        }
+
+        .plan-period {
+            @apply text-zinc-400 text-sm;
+        }
+
+        .plan-billed {
+            @apply ml-2 text-xs text-zinc-400;
+        }
+    }
+
+    .plan-features {
+        @apply space-y-2 mb-6;
+
+        li {
+            @apply flex items-center gap-2 text-sm text-zinc-600;
+        }
+
+        .plan-check {
+            @apply text-green-500 shrink-0;
+        }
+    }
+
+    .paywall-error {
+        @apply text-sm text-red-500 text-center mb-4;
+    }
+
+    .paywall-cta {
+        @apply w-full flex items-center justify-center gap-2 bg-primary hover:bg-orange-600 text-white font-bold py-3 rounded-xl transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed mb-3;
+
+        .spin {
+            @apply animate-spin;
+        }
+    }
+
+    .paywall-note {
+        @apply text-center text-xs text-zinc-400;
+    }
 }

@@ -125,3 +125,11 @@ interface Generate3DViewParams {
     sourceImage: string;
     projectId?: string | null;
 }
+
+interface UsageStats {
+    usage: number;
+    limit: number;
+    isSubscribed: boolean;
+    plan: "monthly" | "yearly" | null;
+    currentPeriodEnd: number | null;
+}
