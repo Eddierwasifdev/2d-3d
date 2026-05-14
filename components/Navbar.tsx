@@ -24,47 +24,49 @@ const Navbar = () => {
     };
 
     return (
-        <header className="navbar">
-            <nav className="inner">
-                <div className="left">
-                    <div className="brand">
-                        <Box  className="logo" />
-
-                        <span className="name">
-                            Roomify
+        <header className="sticky top-4 z-50 mx-auto w-[95%] max-w-5xl rounded-full border border-white/10 bg-slate-800/80 backdrop-blur-md shadow-lg">
+            <div className="flex h-14 items-center justify-between px-6">
+                <div className="mr-4 flex">
+                    <a href="/" className="mr-6 flex items-center space-x-2">
+                        <Box className="h-6 w-6 text-foreground" />
+                        <span className="hidden font-bold sm:inline-block text-foreground">
+                            2d-3d
                         </span>
-                    </div>
-
-                    <ul className="links">
-                        <a href="#">Product</a>
-                        <a href="#">Pricing</a>
-                        <a href="#">Community</a>
-                        <a href="#">Enterprise</a>
-                    </ul>
+                    </a>
+                    <nav className="flex items-center gap-4 text-sm lg:gap-6">
+                        <a href="#" className="transition-colors hover:text-foreground/80 text-foreground/60">Product</a>
+                        <a href="#" className="transition-colors hover:text-foreground/80 text-foreground/60">Pricing</a>
+                        <a href="#" className="transition-colors hover:text-foreground/80 text-foreground/60">Community</a>
+                        <a href="#" className="transition-colors hover:text-foreground/80 text-foreground/60">Enterprise</a>
+                    </nav>
                 </div>
 
-                <div className="actions">
-                    {isSignedIn ? (
-                        <>
-                            <span className="greeting">
-                                {userName ? `Hi, ${userName}` : 'Signed in'}
-                            </span>
+                <div className="flex flex-1 items-center justify-end space-x-2">
+                    <nav className="flex items-center space-x-2">
+                        {isSignedIn ? (
+                            <>
+                                <span className="text-sm font-medium mr-4 text-foreground/80 hidden sm:inline-block">
+                                    {userName ? `Hi, ${userName}` : 'Signed in'}
+                                </span>
 
-                            <Button size="sm" onClick={handleAuthClick} className="btn">
-                                Log Out
-                            </Button>
-                        </>
-                    ) : (
-                        <>
-                            <Button onClick={handleAuthClick} size="sm" variant="ghost">
-                                Log In
-                            </Button>
+                                <button onClick={handleAuthClick} className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-3">
+                                    Log Out
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <button onClick={handleAuthClick} className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 px-3">
+                                    Log In
+                                </button>
 
-                            <a href="#upload" className="cta">Get Started</a>
-                        </>
-                    )}
+                                <a href="#upload" className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2">
+                                    Get Started
+                                </a>
+                            </>
+                        )}
+                    </nav>
                 </div>
-            </nav>
+            </div>
         </header>
     )
 }
